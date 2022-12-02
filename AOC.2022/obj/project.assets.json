@@ -4012,19 +4012,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tvand\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tvand\\Desktop\\Advent of Code\\AOC.2022\\AOC.2022.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Advent of Code\\AOC.2022\\AOC.2022.csproj",
       "projectName": "AOC.2022",
-      "projectPath": "C:\\Users\\tvand\\Desktop\\Advent of Code\\AOC.2022\\AOC.2022.csproj",
-      "packagesPath": "C:\\Users\\tvand\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tvand\\Desktop\\Advent of Code\\AOC.2022\\obj\\",
+      "projectPath": "C:\\Users\\Admin\\Desktop\\Advent of Code\\AOC.2022\\AOC.2022.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin\\Desktop\\Advent of Code\\AOC.2022\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\tvand\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -4088,7 +4088,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

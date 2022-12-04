@@ -28,14 +28,8 @@ public class Day1
     }
 
     [Test]
-    public void Part1()
-    {
-        _totalCaloriesPerElf.Max().Should().Be(69289);
-    }
-
+    public void Part1() => _totalCaloriesPerElf.Max().Should().Be(69289);
+    
     [Test]
-    public void Part2()
-    {
-        _totalCaloriesPerElf.OrderByDescending(x => x).Take(3).Sum().Should().Be(205615);
-    }
+    public void Part2() => _totalCaloriesPerElf.OrderByDescending(x => x).Take(3).Sum().Should().Be(205615);
 }

@@ -5,19 +5,8 @@ namespace AOC._2022;
 
 public class Day5
 {
-    private List<Stack<char>> _stacks = new()
-    {
-        StringToStack("TPZCSLQN"),
-        StringToStack("LPTVHCG"),
-        StringToStack("DCZF"),
-        StringToStack("GWTDLMVC"),
-        StringToStack("PWC"),
-        StringToStack("PFJDCTSZ"),
-        StringToStack("VWGBD"),
-        StringToStack("NJSQHW"),
-        StringToStack("RCQFSLV")
-    };
-
+    private static List<Stack<char>> _stacks = default!;
+    
     private List<(int move, int from, int to)> _moves = new();
 
     [OneTimeSetUp]
@@ -29,6 +18,23 @@ public class Day5
             _moves.Add((int.Parse(splitLine[1]), int.Parse(splitLine[3]) - 1, int.Parse(splitLine[5]) - 1));
         }
 
+    }
+
+    [SetUp]
+    public void Setup()
+    {
+        _stacks = new List<Stack<char>>()
+        {
+            StringToStack("TPZCSLQN"),
+            StringToStack("LPTVHCG"),
+            StringToStack("DCZF"),
+            StringToStack("GWTDLMVC"),
+            StringToStack("PWC"),
+            StringToStack("PFJDCTSZ"),
+            StringToStack("VWGBD"),
+            StringToStack("NJSQHW"),
+            StringToStack("RCQFSLV")
+        };
     }
 
     [Test]

@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using FluentAssertions.Extensions;
 using NUnit.Framework;
 
 namespace AOC._2022;
@@ -7,8 +8,8 @@ public class Day6
 {
     private readonly string _input = File.ReadAllText("Inputs/Day6.txt");
     
-    [TestCase(4, 1142)]
-    [TestCase(14, 2803)]
+    [TestCase(4, 1142, TestName = "Part1")]
+    [TestCase(14, 2803, TestName = "Part2")]
     public void Test(int n , int result)
     {
         int index = 0;

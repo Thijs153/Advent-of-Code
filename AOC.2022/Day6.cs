@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using FluentAssertions.Extensions;
 using NUnit.Framework;
 
 namespace AOC._2022;

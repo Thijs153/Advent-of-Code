@@ -36,7 +36,18 @@ public class Day8
     [Test]
     public void Part2()
     {
-        
+        int max = 0;
+
+        for (int r = 0; r < _input.Count; r++)
+        {
+            for (int c = 0; c < _input.Count; c++)
+            {
+                int score = ScenicScore(r, c);
+                if (score > max) max = score;
+            }
+        }
+
+        max.Should().Be(315495);
     }
 
     private bool IsVisible(int r, int c)
@@ -77,6 +88,46 @@ public class Day8
             if (currentTree <= _input[k][c]) bottom = false;
         }
         return bottom;
+    }
+
+    private int ScenicScore(int r, int c)
+    {
+        int left = 0;
+        int right = 0;
+        int top = 0;
+        int bottom = 0;
+        
+        int currentTree = _input[r][c];
+        
+        // Left
+        for (var k = c - 1; k >= 0; k--)
+        {
+            left++;
+            if (currentTree <= _input[r][k]) break;
+        }
+        
+        // Right
+        for (var k = c + 1; k < _input.Count; k++)
+        {
+            right++;
+            if (currentTree <= _input[r][k]) break;
+        }
+        
+        // Top
+        for (var k = r - 1; k >= 0; k--)
+        {
+            top++;
+            if (currentTree <= _input[k][c]) break;
+        }
+        
+        // Bottom
+        for (var k = r + 1; k < _input.Count; k++)
+        {
+            bottom++;
+            if (currentTree <= _input[k][c]) break;
+        }
+
+        return left * right * top * bottom;
     }
     
 }

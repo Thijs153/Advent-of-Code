@@ -23,7 +23,5 @@ public class Day6
         }
 
         index.Should().Be(result);
-    } 
-    
-    
+    }
 }

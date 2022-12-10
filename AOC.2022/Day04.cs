@@ -3,14 +3,14 @@ using NUnit.Framework;
 
 namespace AOC._2022;
 
-public class Day4
+public class Day04
 {
     private IEnumerable<(Section First, Section Second)> _inputs = default!;
 
     [OneTimeSetUp]
     public void OneTimeSetUp()
     {
-        _inputs = File.ReadAllLines("Inputs/Day4.txt")
+        _inputs = File.ReadAllLines("Inputs/Day04.txt")
             .Select(pair => pair.Split(","))
             .Select(x => (Section.Parse(x[0]), Section.Parse(x[1])));
     }

@@ -4,14 +4,14 @@ using NUnit.Framework;
 namespace AOC._2022;
 
 [TestFixture]
-public class Day8
+public class Day08
 {
     private List<List<int>> _input = new();
 
     [OneTimeSetUp]
     public void OneTimeSetUp()
     {
-        _input = File.ReadLines("Inputs/Day8.txt").Select(x => x.Select(c => c - '0').ToList()).ToList();
+        _input = File.ReadLines("Inputs/Day08.txt").Select(x => x.Select(c => c - '0').ToList()).ToList();
     }
 
     [Test]

@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace AOC._2022;
 
-public class Day7
+public class Day07
 {
     private List<int> _directorySizes = default!;
 
@@ -13,7 +13,7 @@ public class Day7
     {
         var path = new Stack<string>();
         var sizes = new Dictionary<string, int>();
-        foreach (var line in File.ReadLines("Inputs/Day7.txt"))
+        foreach (var line in File.ReadLines("Inputs/Day07.txt"))
         {
             if (line == "$ ls" || line.StartsWith("dir")) continue;
             if (line == "$ cd ..") {

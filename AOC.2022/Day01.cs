@@ -4,7 +4,7 @@ using FluentAssertions;
 namespace AOC._2022;
 
 [TestFixture]
-public class Day1
+public class Day01
 {
     private readonly IList<int> _totalCaloriesPerElf = new List<int>();
 
@@ -12,7 +12,7 @@ public class Day1
     public void OneTimeSetUp()
     {
         var totalCalories = 0;
-        foreach (var line in File.ReadAllLines("Inputs/Day1.txt"))
+        foreach (var line in File.ReadAllLines("Inputs/Day01.txt"))
         {
             if (line == "")
             {

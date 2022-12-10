@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace AOC._2022;
 
 [TestFixture]
-public class Day9
+public class Day09
 {
     private List<(string, int)> _input = default!;
     private HashSet<(int X, int Y)> _visitedPositions = default!;
@@ -12,7 +12,7 @@ public class Day9
     [OneTimeSetUp]
     public void OneTimeSetup()
     {
-        _input = File.ReadAllLines("Inputs/Day9.txt").Select(x => (x.Split()[0], int.Parse(x.Split()[1]))).ToList();
+        _input = File.ReadAllLines("Inputs/Day09.txt").Select(x => (x.Split()[0], int.Parse(x.Split()[1]))).ToList();
     }
 
     [SetUp]
@@ -32,9 +32,14 @@ public class Day9
         {
             for (int i = 0; i < steps; i++)
             {
+                (int x, int y) previousHeadPosition = head;
                 MoveHead(ref head, direction);
-                MoveKnot(ref tail, head);
-                _visitedPositions.Add((tail.X, tail.Y));
+
+                if (!IsKnotInRangeOfPreviousOne(tail, head))
+                {
+                    tail = previousHeadPosition;
+                    _visitedPositions.Add((tail.X, tail.Y));
+                }
             }
         }
 
@@ -48,20 +53,23 @@ public class Day9
         {
             (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0), (0, 0)
         };
-        
+
         foreach (var (direction, steps) in _input)
         {
             for (int i = 0; i < steps; i++)
             {
+                List<(int x, int y)> oldPositions = new(knots);
+                
                 (int x, int y) head = knots[0];
                 MoveHead(ref head, direction);
                 knots[0] = head;
 
                 for (int j = 1; j < knots.Count; j++)
                 {
-                    var knot = knots[j];
-                    MoveKnot(ref knot, knots[j - 1]);
-                    knots[j] = knot;
+                    if (!IsKnotInRangeOfPreviousOne(knots[j], knots[j - 1]))
+                    {
+                        knots[j] = oldPositions[j - 1];
+                    }
                 }
 
                 _visitedPositions.Add((knots[^1].x, knots[^1].y));
@@ -77,6 +85,11 @@ public class Day9
         if (direction == "R") head.x += 1;
         if (direction == "U") head.y += 1;
         if (direction == "D") head.y -= 1;
+    }
+
+    private bool IsKnotInRangeOfPreviousOne((int x, int y) knot, (int x, int y) previousKnot)
+    {
+        return Math.Abs(previousKnot.x - knot.x) <= 1 && Math.Abs(previousKnot.y - knot.y) <= 1;
     }
     private void MoveKnot(ref (int x, int y) knot, (int x, int y) previousKnot)
     {

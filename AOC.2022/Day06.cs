@@ -3,9 +3,9 @@ using NUnit.Framework;
 
 namespace AOC._2022;
 
-public class Day6
+public class Day06
 {
-    private readonly string _input = File.ReadAllText("Inputs/Day6.txt");
+    private readonly string _input = File.ReadAllText("Inputs/Day06.txt");
     
     [TestCase(4, 1142, TestName = "Part1")]
     [TestCase(14, 2803, TestName = "Part2")]

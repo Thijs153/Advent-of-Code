@@ -3,14 +3,14 @@ using NUnit.Framework;
 
 namespace AOC._2022;
 
-public class Day3
+public class Day03
 {
     private List<string> _inputs = new();
     
     [OneTimeSetUp]
     public void OneTimeSetUp()
     {
-        _inputs = File.ReadAllLines("Inputs/Day3.txt").ToList();
+        _inputs = File.ReadAllLines("Inputs/Day03.txt").ToList();
     }
 
     [Test]

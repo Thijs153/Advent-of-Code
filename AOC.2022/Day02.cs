@@ -4,7 +4,7 @@ using FluentAssertions;
 namespace AOC._2022;
 
 [TestFixture]
-public class Day2
+public class Day02
 {
     private readonly List<(char, char)> _inputs = new();
     private readonly Dictionary<(char, char), int> _scoresP1 = new ()
@@ -24,7 +24,7 @@ public class Day2
     [OneTimeSetUp]
     public void OneTimeSetUp()
     {
-        foreach (var line in File.ReadAllLines("Inputs/Day2.txt"))
+        foreach (var line in File.ReadAllLines("Inputs/Day02.txt"))
         {
             _inputs.Add((line[0], line[2]));
         }

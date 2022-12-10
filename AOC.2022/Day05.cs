@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace AOC._2022;
 
-public class Day5
+public class Day05
 {
     private static List<Stack<char>> _stacks = default!;
     
@@ -12,7 +12,7 @@ public class Day5
     [OneTimeSetUp]
     public void OneTimeSetUp()
     {
-        foreach (string line in File.ReadAllLines("Inputs/Day5.txt").Skip(10))
+        foreach (string line in File.ReadAllLines("Inputs/Day05.txt").Skip(10))
         {
             string[] splitLine = line.Split(" ");
             _moves.Add((int.Parse(splitLine[1]), int.Parse(splitLine[3]) - 1, int.Parse(splitLine[5]) - 1));

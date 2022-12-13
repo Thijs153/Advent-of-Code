@@ -4,13 +4,13 @@ using NUnit.Framework;
 
 namespace AOC._2022;
 
-[TestFixture]
 public class Day11
 {
-    private List<Monkey> _monkeys = new();
-
-    [OneTimeSetUp]
-    public void OneTimeSetUp()
+    private List<Monkey> _monkeys = default!;
+    private int _mod;
+    
+    [SetUp]
+    public void SetUp()
     {
         List<List<string>> monkeyGroups = new();
 
@@ -29,6 +29,7 @@ public class Day11
             }
         }
 
+        _monkeys = new List<Monkey>();
         foreach (List<string> monkeyText2 in monkeyGroups)
         {
             var arr = monkeyText2[1].Split(':')[1].Split(',').Select(x => x.Trim()).Select(long.Parse);
@@ -44,53 +45,32 @@ public class Day11
 
             _monkeys.Add(new Monkey(monkeyItems, (operationChar, operationValue), (test, trueMonkey, falseMonkey)));
         }
+        
+        _mod = _monkeys.Aggregate(1, (mod, monkey) => mod * monkey.Test.test);
     }
-    
+
     [Test]
     public void Part1()
     {
-        for (int i = 0; i < 20; i++)
-        {
-            foreach (Monkey monkey in _monkeys)
-            {
-                while (monkey.Items.Count > 0)
-                {
-                    long item = monkey.Items.Dequeue();
-                    long newWorry = Monkey.ExecuteOperation(item, monkey.Operation.mod, monkey.Operation.value, true);
-
-                    if (newWorry % monkey.Test.test == 0)
-                    {
-                        _monkeys[monkey.Test.trueMonkey].Items.Enqueue(newWorry);
-                    }
-                    else
-                    {
-                        _monkeys[monkey.Test.falseMonkey].Items.Enqueue(newWorry);
-                    }
-
-                    monkey.Counter += 1;
-                }
-            }    
-        }
-
-        _monkeys.Select(m => m.Counter)
-            .OrderByDescending(c => c)
-            .Take(2)
-            .Aggregate(1, (a, b) => a * b)
-            .Should().Be(10605);
+        Run(20, true).Should().Be(110888);
     }
     
    [Test]
     public void Part2()
     {
-        var mod = _monkeys.Aggregate(1, (mod, monkey) => mod * monkey.Test.test);
-        for (int i = 0; i < 10000; i++)
+        Run(10000, false).Should().Be(25590400731);
+    }
+
+    private long Run(int rounds, bool shouldDivideBy3)
+    {
+        for (int i = 0; i < rounds; i++)
         {
             foreach (Monkey monkey in _monkeys)
             {
                 while (monkey.Items.Count > 0)
                 {
                     long item = monkey.Items.Dequeue();
-                    long newWorry = Monkey.ExecuteOperation(item, monkey.Operation.mod, monkey.Operation.value, false);
+                    long newWorry = ExecuteOperation(item, monkey.Operation.mod, monkey.Operation.value, shouldDivideBy3);
 
                     if (newWorry % monkey.Test.test == 0)
                     {
@@ -106,18 +86,27 @@ public class Day11
             }    
         }
 
-        _monkeys.Select(m => m.Counter)
+        return _monkeys.Select(m => m.Counter)
             .OrderByDescending(c => c)
             .Take(2)
-            .Aggregate(1L, (a, b) => a * b)
-            .Should().Be(2713310158);
+            .Aggregate(1L, (a, b) => a * b);
+    }
+    
+    private long ExecuteOperation(long old, string mod, string value, bool divide)
+    {
+        long secondValue = value == "old" ? old : long.Parse(value);
+
+        long newWorry = mod == "*" ? (old * secondValue) : (old + secondValue);
+
+        if (divide) return newWorry / 3;
+        return newWorry % _mod;
     }
 }
 
 
 internal class Monkey
 {
-    public Queue<long> Items;
+    public readonly Queue<long> Items;
     public (string mod, string value) Operation;
     public (int test, int trueMonkey, int falseMonkey) Test;
     public int Counter;
@@ -128,16 +117,6 @@ internal class Monkey
         Operation = operation;
         Test = test;
         Counter = 0;
-    }
-
-    public static long ExecuteOperation(long old, string mod, string value, bool divide)
-    {
-        long secondValue = value == "old" ? old : long.Parse(value);
-
-        long newWorry = mod == "*" ? (old * secondValue) : (old + secondValue);
-
-        if (divide) return newWorry / 3;
-        return newWorry;
     }
 }
 

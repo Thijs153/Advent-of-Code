@@ -82,6 +82,7 @@ public class Day11
    [Test]
     public void Part2()
     {
+        var mod = _monkeys.Aggregate(1, (mod, monkey) => mod * monkey.Test.test);
         for (int i = 0; i < 10000; i++)
         {
             foreach (Monkey monkey in _monkeys)

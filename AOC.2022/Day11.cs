@@ -31,8 +31,8 @@ public class Day11
 
         foreach (List<string> monkeyText2 in monkeyGroups)
         {
-            var arr = monkeyText2[1].Split(':')[1].Split(',').Select(x => x.Trim()).Select(int.Parse);
-            Queue<int> monkeyItems = new Queue<int>(arr);
+            var arr = monkeyText2[1].Split(':')[1].Split(',').Select(x => x.Trim()).Select(long.Parse);
+            Queue<long> monkeyItems = new Queue<long>(arr);
             
             var operation = Regex.Match(monkeyText2[2], @"  Operation: new = old ([\*|\+]) (.+)");
             string operationChar = operation.Groups[1].Value;
@@ -55,8 +55,8 @@ public class Day11
             {
                 while (monkey.Items.Count > 0)
                 {
-                    int item = monkey.Items.Dequeue();
-                    int newWorry = Monkey.ExecuteOperation(item, monkey.Operation.mod, monkey.Operation.value, true);
+                    long item = monkey.Items.Dequeue();
+                    long newWorry = Monkey.ExecuteOperation(item, monkey.Operation.mod, monkey.Operation.value, true);
 
                     if (newWorry % monkey.Test.test == 0)
                     {
@@ -79,7 +79,7 @@ public class Day11
             .Should().Be(10605);
     }
     
-   // [Test]
+   [Test]
     public void Part2()
     {
         for (int i = 0; i < 10000; i++)
@@ -88,8 +88,8 @@ public class Day11
             {
                 while (monkey.Items.Count > 0)
                 {
-                    int item = monkey.Items.Dequeue();
-                    int newWorry = Monkey.ExecuteOperation(item, monkey.Operation.mod, monkey.Operation.value, false);
+                    long item = monkey.Items.Dequeue();
+                    long newWorry = Monkey.ExecuteOperation(item, monkey.Operation.mod, monkey.Operation.value, false);
 
                     if (newWorry % monkey.Test.test == 0)
                     {
@@ -116,12 +116,12 @@ public class Day11
 
 internal class Monkey
 {
-    public Queue<int> Items;
+    public Queue<long> Items;
     public (string mod, string value) Operation;
     public (int test, int trueMonkey, int falseMonkey) Test;
     public int Counter;
 
-    public Monkey(Queue<int> items, (string, string) operation, (int, int, int) test)
+    public Monkey(Queue<long> items, (string, string) operation, (int, int, int) test)
     {
         Items = items;
         Operation = operation;
@@ -129,11 +129,11 @@ internal class Monkey
         Counter = 0;
     }
 
-    public static int ExecuteOperation(int old, string mod, string value, bool divide)
+    public static long ExecuteOperation(long old, string mod, string value, bool divide)
     {
-        int secondValue = value == "old" ? old : int.Parse(value);
+        long secondValue = value == "old" ? old : long.Parse(value);
 
-        int newWorry = mod == "*" ? (old * secondValue) : (old + secondValue);
+        long newWorry = mod == "*" ? (old * secondValue) : (old + secondValue);
 
         if (divide) return newWorry / 3;
         return newWorry;

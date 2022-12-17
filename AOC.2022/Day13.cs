@@ -16,7 +16,7 @@ public class Day13
             .Chunk(2)
             .Select((pair, index) => Compare(pair[0], pair[1]) < 0 ? index + 1 : 0)
             .Sum()
-            .Should().Be(13);
+            .Should().Be(5366);
     }
 
     [Test]
@@ -27,7 +27,7 @@ public class Day13
         packets.Sort(Compare);
         
         ((packets.IndexOf(divider[0]) + 1) * (packets.IndexOf(divider[1]) + 1))
-            .Should().Be(1);
+            .Should().Be(23391);
     }
 
     private static IEnumerable<JsonNode> GetPackets(string input) =>

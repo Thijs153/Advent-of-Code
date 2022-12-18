@@ -31,7 +31,7 @@ public class Day18
             .Should().Be(2652);
     }
 
-    private HashSet<Point> FillWithWater(Point from, Bounds bounds, HashSet<Point> lavaLocations)
+    private static HashSet<Point> FillWithWater(Point from, Bounds bounds, HashSet<Point> lavaLocations)
     {
         var result = new HashSet<Point>();
         var queue = new Queue<Point>();
@@ -60,7 +60,7 @@ public class Day18
         let coords = line.Split(",").Select(int.Parse).ToArray()
         select new Point(coords[0], coords[1], coords[2]);
 
-    private Bounds GetBounds(IEnumerable<Point> points)
+    private static Bounds GetBounds(IEnumerable<Point> points)
     {
         points = points.ToList();
         var minX = points.Select(p => p.X).Min() - 1;
@@ -75,12 +75,12 @@ public class Day18
         return new Bounds(new Point(minX, minY, minZ), new Point(maxX, maxY, maxZ));
     }
     
-    private bool Within(Bounds bounds, Point point) =>
+    private static bool Within(Bounds bounds, Point point) =>
         bounds.Min.X <= point.X && point.X <= bounds.Max.X &&
         bounds.Min.Y <= point.Y && point.Y <= bounds.Max.Y &&
         bounds.Min.Z <= point.Z && point.Z <= bounds.Max.Z;
 
-    private IEnumerable<Point> Neighbours(Point point) =>
+    private static IEnumerable<Point> Neighbours(Point point) =>
         new[]
         {
             point with { X = point.X - 1 },

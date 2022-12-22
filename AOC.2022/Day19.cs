@@ -107,13 +107,7 @@ public class Day19
             Available = state.Available - robot.Cost,
             Produced = state.Produced + robot.Produces
         };
-    
-    private static State Mine(State state, Material miners) =>
-        state with
-        {
-            Available = state.Available + miners
-        };
-    
+
     private static IEnumerable<Blueprint> Parse(string[] input)
     {
         foreach (var line in input)

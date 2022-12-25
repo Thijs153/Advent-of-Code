@@ -14,6 +14,8 @@ public class Day25
             .Should().Be("2-==10--=-0101==1201");
     }
     
+    // No part 2 :D
+    
     /*
      * This is just string to number conversion in base 5
      * with the two special digits that worth -2 and -1.

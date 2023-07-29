@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices.ComTypes;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -43,10 +42,10 @@ public class Day03
     
     private static int Extract1(string[] lines, Func<string[], int, char> selectBitAt)
     {
-        var cbit = lines[0].Length;
+        var cBit = lines[0].Length;
         var bits = "";
 
-        for (var i = 0; i < cbit; i++)
+        for (var i = 0; i < cBit; i++)
         {
             bits += selectBitAt(lines, i);
         }
@@ -56,9 +55,9 @@ public class Day03
 
     private static int Extract2(string[] lines, Func<string[], int, char> selectBitAt)
     {
-        var cbit = lines[0].Length;
+        var cBit = lines[0].Length;
 
-        for (var i = 0; lines.Length > 1 && i < cbit; i++)
+        for (var i = 0; lines.Length > 1 && i < cBit; i++)
         {
             var bit = selectBitAt(lines, i);
             lines = lines.Where(line => line[i] == bit).ToArray();

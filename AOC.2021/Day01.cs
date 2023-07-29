@@ -6,7 +6,7 @@ namespace AOC._2021;
 [TestFixture]
 public class Day01
 {
-    private string[] _input = File.ReadAllLines("Inputs/Day01.txt");
+    private readonly string[] _input = File.ReadAllLines("Inputs/Day01.txt");
 
     [Test]
     public void Part1()

@@ -26,12 +26,12 @@ public class Day07
     
     private static IEnumerable<int> AlignSubmarines(int[] numbers, bool expensiveFuelUsage)
     {
-        for (int i = numbers.Min(); i <= numbers.Max(); i++)
+        for (var i = numbers.Min(); i <= numbers.Max(); i++)
         {
-            int fuelUsage = 0;
+            var fuelUsage = 0;
             foreach (var number in numbers)
             {
-                int steps = Math.Abs(number - i);
+                var steps = Math.Abs(number - i);
                 
                 // 'expensiveFuelUsage' : 1 + 2 + ... n : n
                 fuelUsage += expensiveFuelUsage

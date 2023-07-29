@@ -1,4 +1,3 @@
-using System.ComponentModel.Design;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -43,7 +42,7 @@ public class Day21
         // this function needs to be cached, because we don't have time till eternity ;).
         var cache = new Dictionary<(Player, Player), (long, long)>();
 
-        (long activeWins, long otherWins) winCounts((Player active, Player other) players)
+        (long activeWins, long otherWins) WinCounts((Player active, Player other) players)
         {
             if (players.other.score >= 21)
             {
@@ -55,7 +54,7 @@ public class Day21
                 var (activeWins, otherWins) = (0L, 0L);
                 foreach (var steps in DiracThrows())
                 {
-                    var wins = winCounts((players.other, players.active.Move(steps)));
+                    var wins = WinCounts((players.other, players.active.Move(steps)));
                     // they are switching roles here ^
                     // hence the return value needs to be swapped as well
                     activeWins += wins.otherWins;
@@ -68,7 +67,7 @@ public class Day21
             return cache[players];
         }
 
-        var wins = winCounts(Parse(_input));
+        var wins = WinCounts(Parse(_input));
         var result = Math.Max(wins.activeWins, wins.otherWins);
 
         result.Should().Be(306621346123766);

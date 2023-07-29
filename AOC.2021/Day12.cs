@@ -27,7 +27,7 @@ public class Day12
     {
         var map = Parse(input);
 
-        int pathCount(string currentCave, ImmutableHashSet<string> visitedCaves, bool anySmallCaveVisitedTwice)
+        int PathCount(string currentCave, ImmutableHashSet<string> visitedCaves, bool anySmallCaveVisitedTwice)
         {
             if (currentCave == "end")
                 return 1;
@@ -41,18 +41,18 @@ public class Day12
                 if (!seen || isBigCave)
                 {
                     // we can visit big caves any number of times, small caves only once
-                    res += pathCount(cave, visitedCaves.Add(cave), anySmallCaveVisitedTwice);
+                    res += PathCount(cave, visitedCaves.Add(cave), anySmallCaveVisitedTwice);
                 } else if (part2 && !isBigCave && cave != "start" && !anySmallCaveVisitedTwice)
                 {
                     // part 2 also allows us to visit a single small cave twice
-                    res += pathCount(cave, visitedCaves, true);
+                    res += PathCount(cave, visitedCaves, true);
                 }
             }
 
             return res;
         }
 
-        return pathCount("start", ImmutableHashSet.Create<string>("start"), false);
+        return PathCount("start", ImmutableHashSet.Create<string>("start"), false);
     }
     
     private static Dictionary<string, string[]> Parse(string[] input)

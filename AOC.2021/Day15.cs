@@ -32,9 +32,11 @@ public class Day15
         
         // Visit points in order of cumulated risk
         var queue = new PriorityQueue<Point, int>();
-        var totalRiskMap = new Dictionary<Point, int>();
+        var totalRiskMap = new Dictionary<Point, int>
+        {
+            [topLeft] = 0
+        };
 
-        totalRiskMap[topLeft] = 0;
         queue.Enqueue(topLeft, 0);
         
         // Go until we find the bottom right corner
@@ -47,9 +49,9 @@ public class Day15
 
             foreach (var n in Neighbours(p))
             {
-                if (riskMap.ContainsKey(n))
+                if (riskMap.TryGetValue(n, out var value))
                 {
-                    var totalRiskThroughP = totalRiskMap[p] + riskMap[n];
+                    var totalRiskThroughP = totalRiskMap[p] + value;
                     if (totalRiskThroughP < totalRiskMap.GetValueOrDefault(n, int.MaxValue))
                     {
                         totalRiskMap[n] = totalRiskThroughP;
@@ -66,19 +68,19 @@ public class Day15
     // Create an 5x scaled up map, as described in part 2
     private static Dictionary<Point, int> ScaleUp(Dictionary<Point, int> map)
     {
-        var (ccol, crow) = (map.Keys.MaxBy(p => p.X).X + 1, map.Keys.MaxBy(p => p.Y).Y + 1);
+        var (cCol, cRow) = (map.Keys.MaxBy(p => p.X).X + 1, map.Keys.MaxBy(p => p.Y).Y + 1);
 
         var res = new Dictionary<Point, int>(
-            from y in Enumerable.Range(0, crow * 5)
-            from x in Enumerable.Range(0, ccol * 5)
+            from y in Enumerable.Range(0, cRow * 5)
+            from x in Enumerable.Range(0, cCol * 5)
 
             // x, y and risk level in the original map:
-            let tileY = y % crow
-            let tileX = x % ccol
+            let tileY = y % cRow
+            let tileX = x % cCol
             let tileRiskLevel = map[new Point(tileX, tileY)]
 
             // risk level is increased by tile distance from origin:
-            let tileDistance = (y / crow) + (x / ccol)
+            let tileDistance = (y / cRow) + (x / cCol)
 
             // risk level wraps around from 9 to 1:
             let riskLevel = (tileRiskLevel + tileDistance - 1) % 9 + 1

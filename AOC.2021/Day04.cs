@@ -50,19 +50,19 @@ public class Day04
     private class BingoBoard
     {
         public int Score { get; private set; }
-        private readonly List<Cell> Cells;
+        private readonly List<Cell> _cells;
 
         private IEnumerable<Cell> CellsInRow(int iRow) =>
             from iCol in Enumerable.Range(0, 5)
-            select Cells[iRow * 5 + iCol];
+            select _cells[iRow * 5 + iCol];
 
         private IEnumerable<Cell> CellsInCol(int iCol) =>
             from iRow in Enumerable.Range(0, 5)
-            select Cells[iRow * 5 + iCol];
+            select _cells[iRow * 5 + iCol];
 
         public BingoBoard(string input)
         {
-            Cells = (
+            _cells = (
                 from word in input.Split(" \n".ToArray(), StringSplitOptions.RemoveEmptyEntries)
                 select new Cell(word)
             ).ToList();
@@ -70,11 +70,11 @@ public class Day04
 
         public void AddNumber(string number)
         {
-            var iCell = Cells.FindIndex(cell => cell.number == number);
+            var iCell = _cells.FindIndex(cell => cell.number == number);
             if (iCell >= 0)
             {
                 // mark the cell
-                Cells[iCell] = Cells[iCell] with { marked = true };
+                _cells[iCell] = _cells[iCell] with { marked = true };
                 
                 // if the board is completed, compute score
                 for (var i = 0; i < 5; i++)
@@ -85,7 +85,7 @@ public class Day04
                     ) {
 
                         var unmarkedNumbers =
-                            from cell in Cells where !cell.marked select int.Parse(cell.number);
+                            from cell in _cells where !cell.marked select int.Parse(cell.number);
 
                         Score = int.Parse(number) * unmarkedNumbers.Sum();
                     }

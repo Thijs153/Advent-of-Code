@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks.Dataflow;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NUnit.Framework;
 
 namespace AOC._2021;
@@ -21,7 +20,7 @@ public class Day24
         GetSerials(_input).min.Should().Be("14691271141118");
     }
 
-    (string min, string max) GetSerials(string input) {
+    private static (string min, string max) GetSerials(string input) {
 
         var digits = Enumerable.Range(1, 9).ToArray();
 
@@ -31,8 +30,7 @@ public class Day24
         var stmBlocks = input.Split("inp w\n")[1..]; 
 
         // Extracts the numeric argument of a statement:
-        var getArgFromLine = (int iblock, Index iline) =>   
-            int.Parse(stmBlocks[iblock].Split('\n')[iline].Split(' ')[^1]);
+        int GetArgFromLine(int iBlock, Index iLine) => int.Parse(stmBlocks[iBlock].Split('\n')[iLine].Split(' ')[^1]);
 
         // A stack will contain the index of an `a` digit when we find its corresponding `b`.
         var stack = new Stack<int>();
@@ -52,7 +50,7 @@ public class Day24
                 var i = stack.Pop(); 
 
                 // A part of shift is hidden in each of the two blocks:
-                var shift = getArgFromLine(i, ^4) + getArgFromLine(j, 4);
+                var shift = GetArgFromLine(i, ^4) + GetArgFromLine(j, 4);
 
                 // Find the best a and b so that the equation holds
                 foreach (var a in digits) {

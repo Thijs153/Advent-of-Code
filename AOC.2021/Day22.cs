@@ -4,6 +4,7 @@ using NUnit.Framework;
 
 namespace AOC._2021;
 
+[TestFixture]
 public class Day22
 {
     private string[] _input = File.ReadAllLines("Inputs/Day22.txt");

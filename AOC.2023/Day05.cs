@@ -63,7 +63,7 @@ public class Day05
             }
         }
 
-        return outputRanges.ToArray();
+        return [..outputRanges];
     }
 
     private static bool Intersects(Range r1, Range r2) => r1.From <= r2.To && r2.From <= r1.To;
@@ -74,8 +74,8 @@ public class Day05
     private static IEnumerable<Range> PartTwoRanges(long[] numbers) =>
         from c in numbers.Chunk(2) select new Range(c[0], c[0] + c[1] - 1);
 
-    private static long[] ParseNumbers(string input) => (
-        from m in Regex.Matches(input, @"\d+") select long.Parse(m.Value)).ToArray();
+    private static long[] ParseNumbers(string input) =>
+        [..from m in Regex.Matches(input, @"\d+") select long.Parse(m.Value)];
 
     private static Dictionary<Range, Range> ParseMap(string input) => (
         from line in input.Split("\n").Skip(1)

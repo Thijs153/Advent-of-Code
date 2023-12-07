@@ -1,6 +1,5 @@
 ﻿using System.Text.RegularExpressions;
 using FluentAssertions;
-using FluentAssertions.Extensions;
 using NUnit.Framework;
 
 namespace AOC._2023;
@@ -56,10 +55,7 @@ public class Day06
         var x2 = (-b + d) / (2 * a);
         return (Math.Min(x1, x2), Math.Max(x1, x2));
     }
-    
-    private static long[] Parse(string input) => (
-        from m in Regex.Matches(input, @"\d+")
-        select long.Parse(m.Value)
-    ).ToArray();
 
+    private static long[] Parse(string input) =>
+        [..from m in Regex.Matches(input, @"\d+") select long.Parse(m.Value)];
 }

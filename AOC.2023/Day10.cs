@@ -85,13 +85,6 @@ public class Day10
             return false;
         }
         
-        /*
-         * Imagine a small elf starting from the top half of a cell and moving
-         * to the left jumping over the pipes it encounters. It needs to jump
-         * over only 'vertically' oriented pipes, since it runs in the top of the
-         * row. Each jump flips the "Inside" variable.
-         */
-
         var inside = false;
         position--;
         while (map.ContainsKey(position))

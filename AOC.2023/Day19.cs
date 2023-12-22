@@ -7,10 +7,7 @@ using NUnit.Framework;
 namespace AOC._2023;
 
 using Rules = Dictionary<string, string>;
-using Cube = ImmutableArray<Range>;
-
-internal record Range(int begin, int end);
-internal record Cond(int dim, int num, string jmp);
+using Cube = ImmutableArray<Day19.Range>;
 
 public class Day19
 {
@@ -119,4 +116,7 @@ public class Day19
         from line in input.Split('\n')
         let nums = Regex.Matches(line, @"\d+").Select(m => int.Parse(m.Value)).ToArray()
         select nums.Select(n => new Range(n, n)).ToImmutableArray();
+    
+    public record Range(int begin, int end);
+    private record Cond(int dim, int num, string jmp);
 }

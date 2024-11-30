@@ -1,22 +1,19 @@
 using System.Drawing;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2021;
 
-[TestFixture]
 public class Day05
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day05.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         GetIntersections(Parse(_input, true)).Count()
             .Should().Be(6267);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         GetIntersections(Parse(_input, false)).Count()

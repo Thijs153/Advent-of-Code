@@ -1,6 +1,4 @@
 ﻿using System.Text.RegularExpressions;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2023;
 
@@ -8,7 +6,7 @@ public class Day04
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day04.txt");
 
-    [Test]
+    [Fact]
     public void Part1() => (
         from line in _input
         let card = ParseCard(line)
@@ -16,7 +14,7 @@ public class Day04
         select Math.Pow(2, card.matches - 1)
     ).Sum().Should().Be(25010);
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var cards = _input.Select(ParseCard).ToArray();
@@ -34,7 +32,6 @@ public class Day04
         counts.Sum().Should().Be(9924412);
     }
     
-
     private static Card ParseCard(string line)
     {
         var parts = line.Split(':', '|');

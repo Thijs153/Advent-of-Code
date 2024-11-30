@@ -1,22 +1,18 @@
 ﻿using System.Numerics;
-using FluentAssertions;
-using FluentAssertions.Formatting;
-using NUnit.Framework;
+using Map = System.Collections.Generic.Dictionary<System.Numerics.Complex, char>;
+using Beam = (System.Numerics.Complex pos, System.Numerics.Complex dir);
 
 namespace AOC._2023;
-
-using Map = Dictionary<Complex, char>;
-using Beam = (Complex pos, Complex dir);
 
 public class Day16
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day16.txt");
 
-    [Test]
+    [Fact]
     public void Part1() =>
         EnergizedCells(ParseMap(_input), (Complex.Zero, Right)).Should().Be(7860);
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var map = ParseMap(_input);

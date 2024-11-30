@@ -1,21 +1,17 @@
-using FluentAssertions;
-using NUnit.Framework;
-
 namespace AOC._2021;
 
-[TestFixture]
 public class Day01
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day01.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         DepthIncrease(GetNumbers(_input).ToList())
             .Should().Be(1752);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         DepthIncrease(ThreeMeasurements(GetNumbers(_input).ToList()).ToList())

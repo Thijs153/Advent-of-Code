@@ -1,20 +1,17 @@
 ﻿using System.Numerics;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2020;
 
-[TestFixture]
 public class Day12
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day12.txt");
 
-    [TestCase(true, 1106, TestName = "Part1")]
-    [TestCase(false, 107281, TestName = "Part2")]
-    public void Run(bool partOne, double result)
-    {
-        MoveShip(_input, partOne).Should().Be(result);
-    }
+    [Fact]
+    public void Part1() => MoveShip(_input, true).Should().Be(1106);
+    
+    [Fact]
+    public void Part2() => MoveShip(_input, false).Should().Be(107281);
+    
     
     private static double MoveShip(string[] input, bool part1)
     {

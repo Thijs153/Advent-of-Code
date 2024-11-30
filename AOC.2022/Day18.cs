@@ -1,14 +1,10 @@
-using FluentAssertions;
-using NUnit.Framework;
-
 namespace AOC._2022;
 
-[TestFixture]
 public class Day18
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day18.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         var lavaLocations = GetLavaLocations(_input).ToHashSet();
@@ -18,7 +14,7 @@ public class Day18
             .Should().Be(4608);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var lavaLocations = GetLavaLocations(_input).ToHashSet();

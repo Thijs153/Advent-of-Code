@@ -1,16 +1,13 @@
 using System.Collections.Immutable;
 using System.Drawing;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2021;
 
-[TestFixture]
 public class Day09
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day09.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         var map = GetMap(_input);
@@ -20,7 +17,7 @@ public class Day09
             .Should().Be(554);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var map = GetMap(_input);
@@ -44,13 +41,12 @@ public class Day09
     }
 
     private static IEnumerable<Point> Neighbours(Point point) =>
-        new[]
-        {
-            point with { Y = point.Y + 1 },
+    [
+        point with { Y = point.Y + 1 },
             point with { Y = point.Y - 1 },
             point with { X = point.X + 1 },
             point with { X = point.X - 1 }
-        };
+    ];
 
     private static IEnumerable<Point> GetLowPoints(ImmutableDictionary<Point, int> map) =>
         from point in map.Keys

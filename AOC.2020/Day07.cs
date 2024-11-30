@@ -1,15 +1,12 @@
 ﻿using System.Text.RegularExpressions;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2020;
 
-[TestFixture]
 public class Day07
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day07.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         var parentsOf = new Dictionary<string, HashSet<string>>();
@@ -22,7 +19,7 @@ public class Day07
             {
                 if (!parentsOf.ContainsKey(bag))
                 {
-                    parentsOf[bag] = new HashSet<string>();
+                    parentsOf[bag] = [];
                 }
 
                 parentsOf[bag].Add(description.bag);
@@ -33,14 +30,11 @@ public class Day07
         {
             yield return bag;
 
-            if (parentsOf.ContainsKey(bag))
+            if (parentsOf.TryGetValue(bag, out var value))
             {
-                foreach (var container in parentsOf[bag])
+                foreach (var bagT in value.SelectMany(PathsToRoot))
                 {
-                    foreach (var bagT in PathsToRoot(container))
-                    {
-                        yield return bagT;
-                    }
+                    yield return bagT;
                 }
             }
         }
@@ -49,7 +43,7 @@ public class Day07
             .Should().Be(335);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var childrenOf = new Dictionary<string, List<(int count, string bag)>>();

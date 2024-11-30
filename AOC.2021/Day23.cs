@@ -1,20 +1,16 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
+﻿namespace AOC._2021;
 
-namespace AOC._2021;
-
-[TestFixture]
 public class Day23
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day23.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         Solve(_input).Should().Be(11516);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         Solve(Upscale(_input)).Should().Be(40272);
@@ -176,7 +172,7 @@ public class Day23
             {
                 foreach (var iCol in Enumerable.Range(0, map[0].Length))
                 {
-                    maze = maze.SetItem(new(iRow, iCol),
+                    maze = maze.SetItem(new Point(iRow, iCol),
                         iRow < map.Length && iCol < map[iRow].Length ? map[iRow][iCol] : '#');
                 }
             }

@@ -1,14 +1,10 @@
-using FluentAssertions;
-using NUnit.Framework;
-
 namespace AOC._2021;
 
-[TestFixture]
 public class Day21
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day21.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         var threeRoll = DeterministicThrows().Chunk(3).Select(x => x.Sum());
@@ -33,7 +29,7 @@ public class Day21
         result.Should().Be(998088);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         // win counts tells us how many times the active and the other player wins

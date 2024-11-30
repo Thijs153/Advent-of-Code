@@ -1,21 +1,17 @@
-using FluentAssertions;
-using NUnit.Framework;
-
 namespace AOC._2022;
 
-[TestFixture]
 public class Day20
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day20.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         GetGrooveCoordinates(Mix(Parse(_input, 1)))
             .Should().Be(15297L);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var data = Parse(_input, 811589153L);

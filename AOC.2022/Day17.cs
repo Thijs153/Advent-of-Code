@@ -1,14 +1,10 @@
-using FluentAssertions;
-using NUnit.Framework;
-
 namespace AOC._2022;
 
-[TestFixture]
 public class Day17
 {
     private readonly string _input = File.ReadAllText("Inputs/Day17.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         new Tunnel(_input)
@@ -16,7 +12,7 @@ public class Day17
             .Should().Be(3179);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         new Tunnel(_input)

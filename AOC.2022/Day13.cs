@@ -1,15 +1,12 @@
 using System.Text.Json.Nodes;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2022;
 
-[TestFixture]
 public class Day13
 {
     private readonly List<string> _input = File.ReadAllLines("Inputs/Day13.txt").ToList();
-
-    [Test]
+    
+    [Fact]
     public void Part1()
     {
         GetPackets()
@@ -19,7 +16,7 @@ public class Day13
             .Should().Be(5366);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var divider = GetPackets("[[2]]\n[[6]]").ToList();

@@ -1,14 +1,10 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
+﻿namespace AOC._2020;
 
-namespace AOC._2020;
-
-[TestFixture]
 public class Day01
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day01.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         var numbers = Numbers(_input);
@@ -20,7 +16,7 @@ public class Day01
         ).First().Should().Be(485739);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var numbers = Numbers(_input);

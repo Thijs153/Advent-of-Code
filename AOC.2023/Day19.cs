@@ -1,19 +1,16 @@
 ﻿using System.Collections.Immutable;
 using System.Numerics;
 using System.Text.RegularExpressions;
-using FluentAssertions;
-using NUnit.Framework;
+using Rules = System.Collections.Generic.Dictionary<string, string>;
+using Cube = System.Collections.Immutable.ImmutableArray<AOC._2023.Day19.Range>;
 
 namespace AOC._2023;
-
-using Rules = Dictionary<string, string>;
-using Cube = ImmutableArray<Day19.Range>;
 
 public class Day19
 {
     private readonly string _input = File.ReadAllText("Inputs/Day19.txt").ReplaceLineEndings("\n");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         var parts = _input.Split("\n\n");
@@ -26,7 +23,7 @@ public class Day19
         ).Sum().Should().Be(362930);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var parts = _input.Split("\n\n");

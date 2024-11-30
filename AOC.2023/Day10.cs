@@ -1,16 +1,13 @@
 ﻿using System.Numerics;
-using FluentAssertions;
-using NUnit.Framework;
+using Map = System.Collections.Generic.Dictionary<System.Numerics.Complex, char>;
 
 namespace AOC._2023;
-
-using Map = Dictionary<Complex, char>;
 
 public class Day10
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day10.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         var map = ParseMap(_input);
@@ -18,7 +15,7 @@ public class Day10
         (loop.Count / 2).Should().Be(6613);
     }
     
-    [Test]
+    [Fact]
     public void Part2()
     {
         var map = ParseMap(_input);

@@ -1,6 +1,4 @@
 ﻿using System.Collections.Immutable;
-using FluentAssertions;
-using NUnit.Framework;
 
 using Cache = System.Collections.Generic.Dictionary<(string, System.Collections.Immutable.ImmutableStack<int>), long>;
 
@@ -10,10 +8,10 @@ public class Day12
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day12.txt");
 
-    [Test]
+    [Fact]
     public void Part1() => Solve(_input, 1).Should().Be(7674);
 
-    [Test]
+    [Fact]
     public void Part2() => Solve(_input, 5).Should().Be(4443895258186);
     
     private static long Solve(string[] input, int repeat) => (
@@ -46,7 +44,6 @@ public class Day12
             '#' => ProcessHash(pattern, nums, cache),
             _ => ProcessEnd(pattern, nums, cache)
         };
-    
 
     private static long ProcessEnd(string _, ImmutableStack<int> nums, Cache __)
     {

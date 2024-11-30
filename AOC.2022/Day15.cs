@@ -1,17 +1,12 @@
-using System.Collections;
-using System.ComponentModel;
 using System.Text.RegularExpressions;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2022;
 
-[TestFixture]
 public class Day15
 {
-    private string[] _input = File.ReadAllLines("Inputs/Day15.txt");
+    private readonly string[] _input = File.ReadAllLines("Inputs/Day15.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         var pairing = Parse(_input).ToArray();
@@ -32,7 +27,7 @@ public class Day15
         res.Should().Be(5511201);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var pairing = Parse(_input).ToArray();
@@ -40,8 +35,6 @@ public class Day15
 
         (area.X * 4000000L + area.Y).Should().Be(11318723411840);
     }
-    
-    
     
     private IEnumerable<Pair> Parse(string[] input)
     {
@@ -89,8 +82,7 @@ public class Day15
 
         public bool InRange(Pos pos) => Manhattan(pos, Sensor) <= Radius;
 
-        public Rect ToRect() =>
-            new Rect(Sensor.X - Radius, Sensor.Y - Radius, 2 * Radius + 1, 2 * Radius + 1);
+        public Rect ToRect() => new(Sensor.X - Radius, Sensor.Y - Radius, 2 * Radius + 1, 2 * Radius + 1);
 
         private static int Manhattan(Pos p1, Pos p2) =>
             Math.Abs(p1.X - p2.X) + Math.Abs(p1.Y - p2.Y);

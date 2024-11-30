@@ -1,22 +1,19 @@
 using System.Text.RegularExpressions;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2021;
 
-[TestFixture]
 public class Day17
 {
     private readonly string _input = File.ReadAllText("Inputs/Day17.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         Solve(_input).Max()
             .Should().Be(5995);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         Solve(_input).Count()

@@ -1,20 +1,16 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
+﻿namespace AOC._2020;
 
-namespace AOC._2020;
-
-[TestFixture]
 public class Day09
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day09.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         FirstMisMatch(_input).Should().Be(105950735);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         EncryptionWeakness(_input).Should().Be(13826915);

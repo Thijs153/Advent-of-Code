@@ -1,15 +1,12 @@
 using System.Text.RegularExpressions;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2022;
 
-[TestFixture]
 public class Day19
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day19.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         var res = 0;
@@ -21,7 +18,7 @@ public class Day19
         res.Should().Be(2301);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var res = 1;

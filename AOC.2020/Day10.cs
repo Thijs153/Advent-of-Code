@@ -1,15 +1,12 @@
 ﻿using System.Collections.Immutable;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2020;
 
-[TestFixture]
 public class Day10
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day10.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         var jolts = Parse(_input);
@@ -21,7 +18,7 @@ public class Day10
         (oneJolts * threeJolts).Should().Be(2244);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var jolts = Parse(_input);

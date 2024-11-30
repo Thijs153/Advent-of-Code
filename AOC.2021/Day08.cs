@@ -1,9 +1,5 @@
-using FluentAssertions;
-using NUnit.Framework;
-
 namespace AOC._2021;
 
-[TestFixture]
 public class Day08
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day08.txt");
@@ -19,7 +15,7 @@ public class Day08
      *    gggg    ....    gggg    gggg    ....    gggg    gggg    ....    gggg    gggg
      */
     
-    [Test]
+    [Fact]
     public void Part1()
     {
         // we can identify digits 1, 7, 4 and 8 be their active active segments count:
@@ -37,7 +33,7 @@ public class Day08
             .Should().Be(470);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var res = 0;

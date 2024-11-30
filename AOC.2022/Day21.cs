@@ -1,16 +1,11 @@
-using FluentAssertions;
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.ObjectModel;
-using NUnit.Framework;
-
 namespace AOC._2022;
 
-[TestFixture]
 public class Day21
 {
 
     private readonly string[] _input = File.ReadAllLines("Inputs/Day21.txt");
     
-    [Test]
+    [Fact]
     public void Part1()
     {
         Parse(_input, "root", false)
@@ -19,7 +14,7 @@ public class Day21
             .Should().Be("282285213953670");
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var expr = Parse(_input, "root", true) as Eq;
@@ -56,7 +51,7 @@ public class Day21
             context[parts[0].TrimEnd(':')] = parts.Skip(1).ToArray();
         }
 
-        Expr buildExpr(string name)
+        Expr BuildExpr(string name)
         {
             var parts = context[name];
             if (part2)
@@ -65,16 +60,16 @@ public class Day21
                     return new Var("humn");
                 
                 if (name == "root")
-                    return new Eq(buildExpr(parts[0]), buildExpr(parts[2]));
+                    return new Eq(BuildExpr(parts[0]), BuildExpr(parts[2]));
             }
 
             if (parts.Length == 1)
                 return new Const(long.Parse(parts[0]));
             
-            return new Op(buildExpr(parts[0]), parts[1], buildExpr(parts[2]));
+            return new Op(BuildExpr(parts[0]), parts[1], BuildExpr(parts[2]));
         }
 
-        return buildExpr(name);
+        return BuildExpr(name);
     }
 
     private interface Expr

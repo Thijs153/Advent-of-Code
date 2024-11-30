@@ -1,14 +1,10 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
+﻿namespace AOC._2021;
 
-namespace AOC._2021;
-
-[TestFixture]
 public class Day19
 {
     private readonly string _input = File.ReadAllText("Inputs/Day19.txt").Replace("\r", "");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         LocateScanners(_input)
@@ -18,7 +14,7 @@ public class Day19
             .Should().Be(392);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var scanners = LocateScanners(_input);
@@ -111,7 +107,7 @@ public class Day19
          * and compare those.
          */
 
-        IEnumerable<int> absCoordinates(Scanner scanner) =>
+        IEnumerable<int> AbsCoordinates(Scanner scanner) =>
             from coord in scanner.GetBeaconsInWorld()
             from v in new[] { coord.x, coord.y, coord.z }
             select Math.Abs(v);
@@ -125,17 +121,17 @@ public class Day19
          * If there is no match amongst those, there cannot be 12 matching pairs:
          */
 
-        IEnumerable<T> pick<T>(IEnumerable<T> ts) => ts.Take(ts.Count() - 11);
+        IEnumerable<T> Pick<T>(IEnumerable<T> ts) => ts.Take(ts.Count() - 11);
 
-        foreach (var beaconInA in pick(scannerA.GetBeaconsInWorld()))
+        foreach (var beaconInA in Pick(scannerA.GetBeaconsInWorld()))
         {
-            var absA = absCoordinates(
+            var absA = AbsCoordinates(
                 scannerA.Translate(new Coord(-beaconInA.x, -beaconInA.y, -beaconInA.z))
             ).ToHashSet();
 
-            foreach (var beaconInB in pick(scannerB.GetBeaconsInWorld()))
+            foreach (var beaconInB in Pick(scannerB.GetBeaconsInWorld()))
             {
-                var absB = absCoordinates(
+                var absB = AbsCoordinates(
                     scannerB.Translate(new Coord(-beaconInB.x, -beaconInB.y, -beaconInB.z))
                 );
 

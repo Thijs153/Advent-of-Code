@@ -1,33 +1,23 @@
-using FluentAssertions;
-using NUnit.Framework;
-
 namespace AOC._2022;
 
-[TestFixture]
 public class Day09
 {
-    private List<(string, int)> _input = default!;
-
-    [OneTimeSetUp]
-    public void OneTimeSetup()
-    {
-        _input = File.ReadAllLines("Inputs/Day09.txt").Select(x => (x.Split()[0], int.Parse(x.Split()[1]))).ToList();
-    }
-
-    [Test]
+    private readonly List<(string, int)> _input = File.ReadAllLines("Inputs/Day09.txt").Select(x => (x.Split()[0], int.Parse(x.Split()[1]))).ToList();
+    
+    [Fact]
     public void Part1() => GoThroughMovements(2).Should().Be(6464);
     
-    [Test]
+    [Fact]
     public void Part2() => GoThroughMovements(10).Should().Be(2604);
     
     private int GoThroughMovements(int ropeLenght)
     {
-        HashSet<(int X, int Y)> visitedPositions = new();
+        HashSet<(int X, int Y)> visitedPositions = [];
         List<(int x, int y)> knots = Enumerable.Repeat((0, 0), ropeLenght).ToList();
 
         foreach (var (direction, steps) in _input)
         {
-            for (int i = 0; i < steps; i++)
+            for (var i = 0; i < steps; i++)
             {
                 (int x, int y) head = knots[0];
                 MoveHead(ref head, direction);

@@ -1,6 +1,4 @@
 ﻿using System.Text.RegularExpressions;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2023;
 
@@ -8,7 +6,7 @@ public class Day02
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day02.txt");
 
-    [Test]
+    [Fact]
     public void Part1() => (
         from line in _input
         let game = ParseGame(line)
@@ -16,7 +14,7 @@ public class Day02
         select game.Id
     ).Sum().Should().Be(2476);
 
-    [Test]
+    [Fact]
     public void Part2() => (
         from line in _input
         let game = ParseGame(line)

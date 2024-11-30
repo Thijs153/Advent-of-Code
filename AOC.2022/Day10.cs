@@ -1,15 +1,10 @@
-using System.Diagnostics;
-using FluentAssertions;
-using NUnit.Framework;
-
 namespace AOC._2022;
 
-[TestFixture]
 public class Day10
 {
     private readonly List<string> _input = File.ReadAllLines("Inputs/Day10.txt").ToList();
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         HashSet<int> cycles = new() { 20, 60, 100, 140, 180, 220 };
@@ -20,7 +15,7 @@ public class Day10
             .Should().Be(12740);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var screen = "";

@@ -1,30 +1,20 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
+﻿namespace AOC._2022;
 
-namespace AOC._2022;
-
-[TestFixture]
 public class Day08
 {
-    private List<List<int>> _input = new();
+    private readonly List<List<int>> _input = File.ReadLines("Inputs/Day08.txt").Select(x => x.Select(c => c - '0').ToList()).ToList();
 
-    [OneTimeSetUp]
-    public void OneTimeSetUp()
-    {
-        _input = File.ReadLines("Inputs/Day08.txt").Select(x => x.Select(c => c - '0').ToList()).ToList();
-    }
-
-    [Test]
+    [Fact]
     public void Part1()
     {
-        int visibleTrees = 0;
+        var visibleTrees = 0;
 
         visibleTrees += _input[0].Count * 2; // Setting top and bottom of the grid visible
         visibleTrees += (_input.Count - 2) * 2; // Setting edges of other rows visible
 
-        for (int r = 1; r < _input.Count - 1; r++)
+        for (var r = 1; r < _input.Count - 1; r++)
         {
-            for (int c = 1; c < _input.Count - 1; c++)
+            for (var c = 1; c < _input.Count - 1; c++)
             {
                 if (IsVisible(r, c)) visibleTrees++;
             }
@@ -33,16 +23,16 @@ public class Day08
         visibleTrees.Should().Be(1812);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
-        int max = 0;
+        var max = 0;
 
-        for (int r = 0; r < _input.Count; r++)
+        for (var r = 0; r < _input.Count; r++)
         {
-            for (int c = 0; c < _input.Count; c++)
+            for (var c = 0; c < _input.Count; c++)
             {
-                int score = ScenicScore(r, c);
+                var score = ScenicScore(r, c);
                 if (score > max) max = score;
             }
         }
@@ -52,12 +42,12 @@ public class Day08
 
     private bool IsVisible(int r, int c)
     {
-        bool left = true;
-        bool right = true;
-        bool top = true;
-        bool bottom = true;
+        var left = true;
+        var right = true;
+        var top = true;
+        var bottom = true;
 
-        int currentTree = _input[r][c];
+        var currentTree = _input[r][c];
         
         // Left
         for (var k = 0; k < c; k++)
@@ -92,12 +82,12 @@ public class Day08
 
     private int ScenicScore(int r, int c)
     {
-        int left = 0;
-        int right = 0;
-        int top = 0;
-        int bottom = 0;
+        var left = 0;
+        var right = 0;
+        var top = 0;
+        var bottom = 0;
         
-        int currentTree = _input[r][c];
+        var currentTree = _input[r][c];
         
         // Left
         for (var k = c - 1; k >= 0; k--)

@@ -1,7 +1,5 @@
 ﻿using System.Numerics;
 using System.Text.RegularExpressions;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2023;
 
@@ -9,7 +7,7 @@ public class Day24
 {
     private readonly string _input = File.ReadAllText("Inputs/Day24.txt").ReplaceLineEndings("\n");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         const long areaBegin = 200000000000000;
@@ -43,7 +41,7 @@ public class Day24
         res.Should().Be(20336);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var particles = ParseParticles3(_input);

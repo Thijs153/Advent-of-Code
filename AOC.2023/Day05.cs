@@ -1,6 +1,4 @@
 ﻿using System.Text.RegularExpressions;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2023;
 
@@ -8,13 +6,11 @@ public class Day05
 {
     private readonly string _input = File.ReadAllText("Inputs/Day05.txt").ReplaceLineEndings("\n");
 
-    [Test]
-    public void Part1() =>
-        Solve(_input, PartOneRanges).Should().Be(993500720);
+    [Fact]
+    public void Part1() => Solve(_input, PartOneRanges).Should().Be(993500720);
 
-    [Test]
-    public void Part2() =>
-        Solve(_input, PartTwoRanges).Should().Be(4917124);
+    [Fact]
+    public void Part2() => Solve(_input, PartTwoRanges).Should().Be(4917124);
 
     private static long Solve(string input, Func<long[], IEnumerable<Range>> parseSeeds)
     {

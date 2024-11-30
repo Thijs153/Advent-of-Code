@@ -1,9 +1,5 @@
-using FluentAssertions;
-using NUnit.Framework;
-
 namespace AOC._2022;
 
-[TestFixture]
 public class Day24
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day24.txt");
@@ -11,11 +7,11 @@ public class Day24
     /*
      * We do a standard A* algorithm, the only trick is that
      * the 'map' always changes as blizzards move, so our position
-     * is now a space time coordinate.
+     * is now a space-time coordinate.
      * I used an efficient 'Maps' class that can be queried with these.
      */
     
-    [Test]
+    [Fact]
     public void Part1()
     {
         var (entry, exit, maps) = Parse(_input);
@@ -24,7 +20,7 @@ public class Day24
         pos.time.Should().Be(305);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var (entry, exit, maps) = Parse(_input);

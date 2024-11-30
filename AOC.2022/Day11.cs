@@ -1,16 +1,13 @@
 using System.Text.RegularExpressions;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2022;
 
 public class Day11
 {
-    private List<Monkey> _monkeys = default!;
-    private int _mod;
-    
-    [SetUp]
-    public void SetUp()
+    private readonly List<Monkey> _monkeys;
+    private readonly int _mod;
+
+    public Day11()
     {
         List<List<string>> monkeyGroups = new();
 
@@ -48,14 +45,15 @@ public class Day11
         
         _mod = _monkeys.Aggregate(1, (mod, monkey) => mod * monkey.Test.test);
     }
+    
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         Run(20, true).Should().Be(110888);
     }
     
-   [Test]
+   [Fact]
     public void Part2()
     {
         Run(10000, false).Should().Be(25590400731);

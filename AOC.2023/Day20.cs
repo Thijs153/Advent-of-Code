@@ -1,19 +1,17 @@
 ﻿using System.Text.RegularExpressions;
-using FluentAssertions;
-using NUnit.Framework;
+using Gates = System.Collections.Generic.Dictionary<string, AOC._2023.Gate>;
+using Signal = (string sender, string receiver, bool value);
 
 namespace AOC._2023;
 
-using Gates = Dictionary<string, Gate>;
-using Signal = (string sender, string receiver, bool value);
 
-record Gate(string[] inputs, Func<Signal, IEnumerable<Signal>> handle);
+public record Gate(string[] inputs, Func<Signal, IEnumerable<Signal>> handle);
 
 public class Day20
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day20.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         var gates = ParseGates(_input);
@@ -26,7 +24,7 @@ public class Day20
         (values.Count(v => v) * values.Count(v => !v)).Should().Be(666795063);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var gates = ParseGates(_input);

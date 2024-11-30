@@ -1,6 +1,4 @@
 ﻿using System.Text.RegularExpressions;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2023;
 
@@ -8,11 +6,11 @@ public class Day01
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day01.txt");
 
-    [Test]
+    [Fact]
     public void Part1() =>
         Solve(_input, @"\d").Should().Be(55123);
 
-    [Test]
+    [Fact]
     public void Part2() =>
         Solve(_input, @"\d|one|two|three|four|five|six|seven|eight|nine").Should().Be(55260);
 

@@ -1,22 +1,19 @@
 using System.Drawing;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2021;
 
-[TestFixture]
 public class Day15
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day15.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         Solve(Parse(_input))
             .Should().Be(696);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         Solve(ScaleUp(Parse(_input)))
@@ -65,7 +62,7 @@ public class Day15
         return totalRiskMap[bottomRight];
     }
 
-    // Create an 5x scaled up map, as described in part 2
+    // Create a 5x scaled up map, as described in part 2
     private static Dictionary<Point, int> ScaleUp(Dictionary<Point, int> map)
     {
         var (cCol, cRow) = (map.Keys.MaxBy(p => p.X).X + 1, map.Keys.MaxBy(p => p.Y).Y + 1);
@@ -100,11 +97,10 @@ public class Day15
     }
 
     private static IEnumerable<Point> Neighbours(Point point) =>
-        new[]
-        {
-            point with { Y = point.Y + 1 },
+    [
+        point with { Y = point.Y + 1 },
             point with { Y = point.Y - 1 },
             point with { X = point.X + 1 },
-            point with { X = point.X - 1 },
-        };
+            point with { X = point.X - 1 }
+    ];
 }

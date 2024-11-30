@@ -1,21 +1,17 @@
-using FluentAssertions;
-using NUnit.Framework;
-
 namespace AOC._2021;
 
-[TestFixture]
 public class Day10
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day10.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         GetScores(_input, true).Sum()
             .Should().Be(323691);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         Median(GetScores(_input, false))

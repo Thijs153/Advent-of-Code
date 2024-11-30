@@ -1,30 +1,26 @@
 using System.Collections;
 using System.Text.RegularExpressions;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2022;
 
-[TestFixture]
 public class Day16
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day16.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         Solve(_input, true, 30)
             .Should().Be(1850);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         Solve(_input, false, 26)
             .Should().Be(2306);
     }
-
-
+    
     private int Solve(IEnumerable<string> input, bool singlePlayer, int time)
     {
         var map = Parse(input);

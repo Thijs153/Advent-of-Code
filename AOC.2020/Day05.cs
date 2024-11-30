@@ -1,20 +1,16 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
+﻿namespace AOC._2020;
 
-namespace AOC._2020;
-
-[TestFixture]
 public class Day05
 {
     private readonly string _input = File.ReadAllText("Inputs/Day05.txt").ReplaceLineEndings("\n");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         Seats(_input).Max().Should().Be(922);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var seats = Seats(_input);

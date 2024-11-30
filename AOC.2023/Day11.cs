@@ -1,24 +1,21 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
-
-namespace AOC._2023;
+﻿namespace AOC._2023;
 
 public class Day11
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day11.txt");
 
-    [Test]
+    [Fact]
     public void Part1() =>
         Solve(_input, 1).Should().Be(9418609);
     
-    [Test]
+    [Fact]
     public void Part2() =>
         Solve(_input, 999999).Should().Be(593821230983);
 
     private static long Solve(string[] map, int expansion)
     {
-        Func<int, bool> isRowEmpty = EmptyRows(map).ToHashSet().Contains;
-        Func<int, bool> isColEmpty = EmptyCols(map).ToHashSet().Contains;
+        var isRowEmpty = EmptyRows(map).ToHashSet().Contains;
+        var isColEmpty = EmptyCols(map).ToHashSet().Contains;
 
         var galaxies = FindAll(map, '#');
         return (

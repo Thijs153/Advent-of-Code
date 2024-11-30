@@ -1,15 +1,12 @@
 using System.Numerics;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2022;
 
-[TestFixture]
 public class Day23
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day23.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         Run(Parse(_input))
@@ -18,7 +15,7 @@ public class Day23
             .Should().Be(3917);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         Run(Parse(_input))
@@ -108,7 +105,7 @@ public class Day23
     private static readonly Complex SE = S + E;
     private static readonly Complex SW = S + W;
 
-    private static Complex[] Directions = new[] { NW, N, NE, E, SE, S, SW, W };
+    private static Complex[] Directions = [NW, N, NE, E, SE, S, SW, W];
     
     // Extends an ordinal position with its intercardinal neighbours
     private static Complex[] ExtendDir(Complex dir) =>

@@ -1,21 +1,17 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
+﻿namespace AOC._2020;
 
-namespace AOC._2020;
-
-[TestFixture]
 public class Day11
 {
     private readonly string _input = File.ReadAllText("Inputs/Day11.txt").ReplaceLineEndings("\n");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         Solve(_input, 4, _ => true)
             .Should().Be(2359);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         Solve(_input, 5, place => place != '.')

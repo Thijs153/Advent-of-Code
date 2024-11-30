@@ -1,22 +1,19 @@
 using System.Collections.Immutable;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2021;
 
-[TestFixture]
 public class Day12
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day12.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         Explore(_input, false)
             .Should().Be(3450);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         Explore(_input, true)

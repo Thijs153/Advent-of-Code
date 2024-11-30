@@ -1,15 +1,10 @@
-﻿using NUnit.Framework;
-using FluentAssertions;
+﻿namespace AOC._2022;
 
-namespace AOC._2022;
-
-[TestFixture]
 public class Day01
 {
     private readonly IList<int> _totalCaloriesPerElf = new List<int>();
 
-    [OneTimeSetUp]
-    public void OneTimeSetUp()
+    public Day01()
     {
         var totalCalories = 0;
         foreach (var line in File.ReadAllLines("Inputs/Day01.txt"))
@@ -27,9 +22,9 @@ public class Day01
         _totalCaloriesPerElf.Add(totalCalories);
     }
 
-    [Test]
+    [Fact]
     public void Part1() => _totalCaloriesPerElf.Max().Should().Be(69289);
     
-    [Test]
+    [Fact]
     public void Part2() => _totalCaloriesPerElf.OrderByDescending(x => x).Take(3).Sum().Should().Be(205615);
 }

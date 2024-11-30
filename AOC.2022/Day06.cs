@@ -1,20 +1,21 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
-
-namespace AOC._2022;
+﻿namespace AOC._2022;
 
 public class Day06
 {
     private readonly string _input = File.ReadAllText("Inputs/Day06.txt");
+
+    [Fact]
+    public void Part1() => Test(4).Should().Be(1142);
+
+    [Fact]
+    public void Part2() => Test(14).Should().Be(2803);
     
-    [TestCase(4, 1142, TestName = "Part1")]
-    [TestCase(14, 2803, TestName = "Part2")]
-    public void Test(int n , int result)
+    private int Test(int n)
     {
-        int index = 0;
-        for (int i = n; i < _input.Length; i++)
+        var index = 0;
+        for (var i = n; i < _input.Length; i++)
         {
-            string sequence = _input[(i - n)..i];
+            var sequence = _input[(i - n)..i];
 
             if (!sequence.Distinct().SequenceEqual(sequence)) continue;
 
@@ -22,6 +23,6 @@ public class Day06
             break;
         }
 
-        index.Should().Be(result);
+        return index;
     }
 }

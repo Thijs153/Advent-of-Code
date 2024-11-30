@@ -1,7 +1,4 @@
-﻿
-using System.Text.RegularExpressions;
-using FluentAssertions;
-using NUnit.Framework;
+﻿using System.Text.RegularExpressions;
 
 namespace AOC._2023;
 
@@ -9,13 +6,11 @@ public class Day08
 {
     private readonly string _input = File.ReadAllText("Inputs/Day08.txt").ReplaceLineEndings("\n");
 
-    [Test]
-    public void Part1() =>
-        Solve(_input, "AAA", "ZZZ").Should().Be(14257);
+    [Fact]
+    public void Part1() => Solve(_input, "AAA", "ZZZ").Should().Be(14257);
 
-    [Test]
-    public void Part2() =>
-        Solve(_input, "..A", "..Z").Should().Be(16187743689077);
+    [Fact]
+    public void Part2() => Solve(_input, "..A", "..Z").Should().Be(16187743689077);
 
     private static long Solve(string input, string start, string end)
     {

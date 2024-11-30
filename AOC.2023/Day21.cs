@@ -1,6 +1,4 @@
 ﻿using System.Numerics;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2023;
 
@@ -8,7 +6,7 @@ public class Day21
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day21.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         var map = ParseMap(_input);
@@ -22,7 +20,7 @@ public class Day21
         positions.Count.Should().Be(3764);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         const int steps = 26501365; // 202300 * 131 + 65
@@ -72,17 +70,16 @@ public class Day21
     private static readonly Complex Center = new Complex(65, 65);
     
     private static readonly Complex[] Corners = [
-        new Complex(0, 0), new Complex(0, 130),
-        new Complex(130, 130), new Complex(130, 0),
+        new(0, 0), new(0, 130),
+        new(130, 130), new(130, 0),
     ];
 
     private static readonly Complex[] Middles = [
-        new Complex(65, 0), new Complex(65, 130),
-        new Complex(0, 65), new Complex(130, 65),
+        new(65, 0), new(65, 130),
+        new(0, 65), new(130, 65),
     ];
 
     private static readonly Complex[] EntryPoints = [Center, ..Corners, ..Middles];
-    private static readonly Complex[] Dirs = [1, -1, Complex.ImaginaryOne, -Complex.ImaginaryOne];
     
     private static HashSet<Complex> Step(Dictionary<Complex, char> map, HashSet<Complex> pos)
     {

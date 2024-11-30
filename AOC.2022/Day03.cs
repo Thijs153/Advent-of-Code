@@ -1,19 +1,10 @@
-using FluentAssertions;
-using NUnit.Framework;
-
 namespace AOC._2022;
 
 public class Day03
 {
-    private List<string> _inputs = new();
-    
-    [OneTimeSetUp]
-    public void OneTimeSetUp()
-    {
-        _inputs = File.ReadAllLines("Inputs/Day03.txt").ToList();
-    }
+    private readonly List<string> _inputs = File.ReadAllLines("Inputs/Day03.txt").ToList();
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         _inputs.Sum(line => 
@@ -21,7 +12,7 @@ public class Day03
             .Should().Be(7795);
     }
     
-    [Test]
+    [Fact]
     public void Part2()
     {
         _inputs.Chunk(3)

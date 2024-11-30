@@ -1,22 +1,19 @@
 using System.Drawing;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2021;
 
-[TestFixture]
 public class Day11
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day11.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         Simulate(_input).Take(100).Sum()
             .Should().Be(1647);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         (Simulate(_input).TakeWhile(flash => flash != 100).Count() + 1)
@@ -75,8 +72,8 @@ public class Day11
         );
 
     private static IEnumerable<Point> Neighbours(Point point) =>
-        from dx in new int[] { -1, 0, 1 }
-        from dy in new int[] { -1, 0, 1 }
+        from dx in new[] { -1, 0, 1 }
+        from dy in new[] { -1, 0, 1 }
         where dx != 0 || dy != 0
         select new Point(point.X + dx, point.Y + dy);
 }

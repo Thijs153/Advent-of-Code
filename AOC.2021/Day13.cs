@@ -1,22 +1,19 @@
 using System.Drawing;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2021;
 
-[TestFixture]
 public class Day13
 {
     private readonly string _input = File.ReadAllText("Inputs/Day13.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         GetFolds(_input).First().Count
             .Should().Be(671);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         ToString(GetFolds(_input).Last())

@@ -1,17 +1,13 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
-
-namespace AOC._2023;
-
+﻿namespace AOC._2023;
 
 public class Day22
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day22.txt");
 
-    [Test]
+    [Fact]
     public void Part1() => Kaboom(_input).Count(x => x == 0).Should().Be(480);
 
-    [Test]
+    [Fact]
     public void Part2() => Kaboom(_input).Sum().Should().Be(84021);
     
     // disintegrates the blocks one by one and returns how many blocks would

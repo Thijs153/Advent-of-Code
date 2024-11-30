@@ -1,6 +1,4 @@
 ﻿using System.Numerics;
-using FluentAssertions;
-using NUnit.Framework;
 
 using Map = System.Collections.Generic.Dictionary<System.Numerics.Complex, char>;
 
@@ -10,11 +8,11 @@ public class Day13
 {
     private readonly string _input = File.ReadAllText("Inputs/Day13.txt").ReplaceLineEndings("\n");
 
-    [Test]
+    [Fact]
     public void Part1() =>
         Solve(_input, 0).Should().Be(30802);
 
-    [Test]
+    [Fact]
     public void Part2() =>
         Solve(_input, 1).Should().Be(37876);
 
@@ -41,7 +39,7 @@ public class Day13
         from ray0 in Positions(map, mirror, Ortho(rayDir))
         let rayA = Positions(map, ray0, rayDir)
         let rayB = Positions(map, ray0 - rayDir, -rayDir)
-        select Enumerable.Zip(rayA, rayB).Count(p => map[p.First] != map[p.Second])
+        select rayA.Zip(rayB).Count(p => map[p.First] != map[p.Second])
     ).Sum();
 
     // allowed positions of the map from 'start' going in 'dir'

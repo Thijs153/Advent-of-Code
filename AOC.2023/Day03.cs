@@ -1,6 +1,4 @@
 ﻿using System.Text.RegularExpressions;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2023;
 
@@ -8,7 +6,7 @@ public class Day03
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day03.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         var symbols = Parse(_input, new Regex(@"[^.0-9]"));
@@ -21,7 +19,7 @@ public class Day03
         ).Sum().Should().Be(525911);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var gears = Parse(_input, new Regex(@"\*"));

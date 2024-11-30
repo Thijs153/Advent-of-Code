@@ -1,21 +1,13 @@
-using FluentAssertions;
-using NUnit.Framework;
-
 namespace AOC._2022;
 
 public class Day04
 {
-    private IEnumerable<(Section First, Section Second)> _inputs = default!;
+    private readonly List<(Section First, Section Second)> _inputs = File.ReadAllLines("Inputs/Day04.txt")
+        .Select(pair => pair.Split(","))
+        .Select(x => (Section.Parse(x[0]), Section.Parse(x[1])))
+        .ToList();
 
-    [OneTimeSetUp]
-    public void OneTimeSetUp()
-    {
-        _inputs = File.ReadAllLines("Inputs/Day04.txt")
-            .Select(pair => pair.Split(","))
-            .Select(x => (Section.Parse(x[0]), Section.Parse(x[1])));
-    }
-
-    [Test]
+    [Fact]
     public void Part1()
     {
         _inputs
@@ -23,7 +15,7 @@ public class Day04
             .Should().Be(644);
     }
     
-    [Test]
+    [Fact]
     public void Part2()
     {
         _inputs

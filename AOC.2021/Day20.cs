@@ -1,22 +1,18 @@
-using FluentAssertions;
-using NUnit.Framework;
-
 namespace AOC._2021;
 
-[TestFixture]
 public class Day20
 {
     private readonly string _input = File.ReadAllText("Inputs/Day20.txt")
         .Replace("\r", "");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         EnhanceN(_input, 2).Count(x => x.Value == 1)
             .Should().Be(4873);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         EnhanceN(_input, 50).Count(x => x.Value == 1)

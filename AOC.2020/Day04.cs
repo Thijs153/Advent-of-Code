@@ -1,22 +1,20 @@
 ﻿using System.Text.RegularExpressions;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2020;
 
-[TestFixture]
+
 public class Day04
 {
     private readonly string _input = File.ReadAllText("Inputs/Day04.txt").ReplaceLineEndings("\n");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         ValidCount(_input, cred => _rxs.All(kvp => cred.ContainsKey(kvp.Key)))
             .Should().Be(242);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         ValidCount(_input, cred => _rxs.All(kvp =>

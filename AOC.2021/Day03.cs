@@ -1,21 +1,17 @@
-using FluentAssertions;
-using NUnit.Framework;
-
 namespace AOC._2021;
 
-[TestFixture]
 public class Day03
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day03.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         (GammaRate(_input) * EpsilonRate(_input))
             .Should().Be(2498354);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         (OxygenGeneratorRating(_input) * Co2ScrubberRating(_input))

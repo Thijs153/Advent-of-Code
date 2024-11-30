@@ -1,11 +1,7 @@
 using System.Collections.Immutable;
-using FluentAssertions;
-using NUnit.Framework;
-// ReSharper disable InconsistentNaming
 
 namespace AOC._2022;
 
-[TestFixture]
 public class Day12
 {
     private readonly Symbol _startSymbol = new('S');
@@ -13,7 +9,7 @@ public class Day12
     private readonly Elevation _lowestElevation = new('a');
     private readonly Elevation _highestElevation = new('z');
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         GetPoints()
@@ -21,7 +17,7 @@ public class Day12
             .Should().Be(370);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         GetPoints()

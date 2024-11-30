@@ -1,22 +1,19 @@
 using System.Collections;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2021;
 
-[TestFixture]
 public class Day16
 {
     private readonly string _input = File.ReadAllText("Inputs/Day16.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         GetTotalVersion(GetPacket(Parse(_input)))
             .Should().Be(996);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         Evaluate(GetPacket(Parse(_input)))

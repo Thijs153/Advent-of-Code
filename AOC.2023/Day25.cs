@@ -1,13 +1,10 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
-
-namespace AOC._2023;
+﻿namespace AOC._2023;
 
 public class Day25
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day25.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         var r = new Random();
@@ -21,7 +18,6 @@ public class Day25
         var res = c1 * c2;
         res.Should().Be(538368);
     }
-    
     
     /*
      * The Karger's algorithm returns the size of one 'cut' of the graph.

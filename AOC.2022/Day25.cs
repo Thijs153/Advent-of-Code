@@ -1,13 +1,10 @@
-using FluentAssertions;
-using NUnit.Framework;
-
 namespace AOC._2022;
 
 public class Day25
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day25.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         LongToSnafu(_input.Select(SnafuToLong).Sum())

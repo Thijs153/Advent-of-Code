@@ -1,6 +1,4 @@
 ﻿using System.Numerics;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2023;
 
@@ -8,13 +6,11 @@ public class Day18
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day18.txt");
 
-    [Test]
-    public void Part1() =>
-        Area(Steps1(_input)).Should().Be(46394);
+    [Fact]
+    public void Part1() => Area(Steps1(_input)).Should().Be(46394);
 
-    [Test]
-    public void Part2() =>
-        Area(Steps2(_input)).Should().Be(201398068194715);
+    [Fact]
+    public void Part2() => Area(Steps2(_input)).Should().Be(201398068194715);
 
     private static IEnumerable<Complex> Steps1(string[] input) =>
         from line in input

@@ -1,21 +1,18 @@
 ﻿using System.Text.RegularExpressions;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2021;
 
-[TestFixture]
 public class Day22
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day22.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         ActiveCubesInRange(_input, 50).Should().Be(642125);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         ActiveCubesInRange(_input, int.MaxValue).Should().Be(1235164413198198);

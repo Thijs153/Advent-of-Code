@@ -1,16 +1,12 @@
 using System.Numerics;
-using System.Runtime.InteropServices;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2022;
 
-[TestFixture]
 public class Day14
 {
-    private List<string> _input = File.ReadAllLines("Inputs/Day14.txt").ToList();
+    private readonly List<string> _input = File.ReadAllLines("Inputs/Day14.txt").ToList();
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         new Cave(_input, hasFloor: false)
@@ -18,14 +14,13 @@ public class Day14
             .Should().Be(737);
     }
     
-    [Test]
+    [Fact]
     public void Part2()
     {
         new Cave(_input, hasFloor: true)
             .FillWithSand(new Complex(500, 0))
             .Should().Be(28145);
     }
-
 }
 
 internal class Cave

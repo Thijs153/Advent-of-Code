@@ -1,10 +1,7 @@
 using System.Text.RegularExpressions;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2022;
 
-[TestFixture]
 public class Day22
 {
     private readonly string _input = File.ReadAllText("Inputs/Day22.txt");
@@ -27,7 +24,7 @@ public class Day22
         This mapping was generated from a paper model.
     */
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         Solve(
@@ -41,7 +38,7 @@ public class Day22
         ).Should().Be(164014);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         Solve(
@@ -189,7 +186,7 @@ public class Day22
             new(a.iRow - b.iRow, a.iCol - b.iCol);
     }
     
-    private interface Cmd {}
+    private interface Cmd;
 
     private record Forward(int n) : Cmd;
 

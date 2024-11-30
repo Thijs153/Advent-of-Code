@@ -1,21 +1,17 @@
-using FluentAssertions;
-using NUnit.Framework;
-
 namespace AOC._2021;
 
-[TestFixture]
 public class Day14
 {
     private readonly string _input = File.ReadAllText("Inputs/Day14.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         Solve(_input, 10)
             .Should().Be(3408);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         Solve(_input, 40)

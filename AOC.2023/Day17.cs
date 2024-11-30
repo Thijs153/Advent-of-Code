@@ -1,16 +1,13 @@
 ﻿using System.Numerics;
-using FluentAssertions;
-using NUnit.Framework;
+using Map = System.Collections.Generic.Dictionary<System.Numerics.Complex, int>;
 
 namespace AOC._2023;
-
-using Map = Dictionary<Complex, int>;
 
 public class Day17
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day17.txt");
 
-    [Test]
+    [Fact]
     public void Part1() =>
         HeatLoss(
             _input,
@@ -20,7 +17,7 @@ public class Day17
             )
         ).Should().Be(1099);
     
-    [Test]
+    [Fact]
     public void Part2() =>
         HeatLoss(
             _input,

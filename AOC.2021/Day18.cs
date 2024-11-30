@@ -1,14 +1,10 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
+﻿namespace AOC._2021;
 
-namespace AOC._2021;
-
-[TestFixture]
 public class Day18
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day18.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         _input.Select(ParseNumber)
@@ -20,7 +16,7 @@ public class Day18
             .Should().Be(4008L);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         var numbers = _input.Select(ParseNumber).ToArray();
@@ -35,7 +31,7 @@ public class Day18
     private static long Magnitude(Number number) {
         var iToken = 0;
 
-        long computeRecursive() 
+        long ComputeRecursive() 
         {
             var token = number[iToken++];
             if (token.kind == TokenKind.Digit) 
@@ -45,13 +41,13 @@ public class Day18
             }
 
             // take left and right side of the pair
-            var left = computeRecursive();
-            var right = computeRecursive();
+            var left = ComputeRecursive();
+            var right = ComputeRecursive();
             iToken++; // don't forget to eat the closing parenthesis
             return 3 * left + 2 * right;
         }
 
-        return computeRecursive();
+        return ComputeRecursive();
     }
 
 
@@ -176,14 +172,11 @@ public class Day18
     private class Number : List<Token>
     {
         public static Number Digit(int value) =>
-            new()
-            {
-                new Token(TokenKind.Digit, value)
-            };
+            [new Token(TokenKind.Digit, value)];
 
         public static Number Pair(Number a, Number b)
         {
-            var number = new Number { new(TokenKind.Open) };
+            var number = new Number { new Token(TokenKind.Open) };
             number.AddRange(a);
             number.AddRange(b);
             number.Add(new Token(TokenKind.Close));

@@ -1,7 +1,4 @@
-﻿
-using FluentAssertions;
-using NUnit.Framework;
-using Map = char[][];
+﻿using Map = char[][];
 
 namespace AOC._2023;
 
@@ -9,13 +6,11 @@ public class Day14
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day14.txt");
 
-    [Test]
-    public void Part1() => 
-        Measure(Tilt(Parse(_input))).Should().Be(106990);
+    [Fact]
+    public void Part1() => Measure(Tilt(Parse(_input))).Should().Be(106990);
 
-    [Test]
-    public void Part2() => 
-        Measure(Iterate(Parse(_input), Cycle, 1_000_000_000)).Should().Be(100531);
+    [Fact]
+    public void Part2() => Measure(Iterate(Parse(_input), Cycle, 1_000_000_000)).Should().Be(100531);
     
     private static Map Parse(string[] input) =>
         (from line in input select line.ToCharArray()).ToArray();

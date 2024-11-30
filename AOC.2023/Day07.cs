@@ -1,6 +1,4 @@
 ﻿using System.Numerics;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace AOC._2023;
 
@@ -8,14 +6,11 @@ public class Day07
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day07.txt");
 
-    [Test]
-    public void Part1() =>
-        Solve(_input, Part1Points).Should().Be(251058093);
+    [Fact]
+    public void Part1() => Solve(_input, Part1Points).Should().Be(251058093);
 
-    [Test]
-    public void Part2() =>
-        Solve(_input, Part2Points).Should().Be(249781879);
-    
+    [Fact]
+    public void Part2() => Solve(_input, Part2Points).Should().Be(249781879);
     
     private static BigInteger Part1Points(string hand) =>
         (PatternValue(hand) << 64) + CardValue(hand, "123456789TJQKA");

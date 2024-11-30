@@ -8,6 +8,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOC.2020", "AOC.2020\AOC.20
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOC.2023", "AOC.2023\AOC.2023.csproj", "{0515ED60-D42A-4587-BE1A-8FE44148D8DD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6926914B-0768-420A-8C85-BC2BC5FB8F62}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

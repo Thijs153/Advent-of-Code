@@ -1,14 +1,10 @@
-using FluentAssertions;
-using NUnit.Framework;
-
 namespace AOC._2021;
 
-[TestFixture]
 public class Day07
 {
     private readonly string[] _input = File.ReadAllText("Inputs/Day07.txt").Split(",");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         AlignSubmarines(Parse(_input).ToArray(), false)
@@ -16,7 +12,7 @@ public class Day07
             .Should().Be(348664);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         AlignSubmarines(Parse(_input).ToArray(), true)

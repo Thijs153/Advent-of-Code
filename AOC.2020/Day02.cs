@@ -1,14 +1,10 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
+﻿namespace AOC._2020;
 
-namespace AOC._2020;
-
-[TestFixture]
 public class Day02
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day02.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         ValidCount(_input, (pe) =>
@@ -18,7 +14,7 @@ public class Day02
         }).Should().Be(614);
     }
     
-    [Test]
+    [Fact]
     public void Part2()
     {
         ValidCount(_input, (pe) => (pe.password[pe.a - 1] == pe.ch) ^ (pe.password[pe.b - 1] == pe.ch))

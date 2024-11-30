@@ -1,11 +1,8 @@
 ﻿using System.Numerics;
-using FluentAssertions;
-using NUnit.Framework;
+using Map = System.Collections.Generic.Dictionary<System.Numerics.Complex, char>;
+using Node = long;
 
 namespace AOC._2023;
-
-using Map = Dictionary<Complex, char>;
-using Node = long;
 
 public class Day23
 {
@@ -20,13 +17,11 @@ public class Day23
      * which can be solved using a dynamic programming approach.
      */
     
-    [Test]
-    public void Part1() => 
-        Solve(_input).Should().Be(2294);
+    [Fact]
+    public void Part1() => Solve(_input).Should().Be(2294);
 
-    [Test]
-    public void Part2() => 
-        Solve(RemoveSlopes(_input)).Should().Be(6418);
+    [Fact]
+    public void Part2() => Solve(RemoveSlopes(_input)).Should().Be(6418);
     
     private static readonly Complex Up = -Complex.ImaginaryOne;
     private static readonly Complex Down = Complex.ImaginaryOne;

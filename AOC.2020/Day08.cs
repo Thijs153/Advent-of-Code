@@ -1,20 +1,16 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
+﻿namespace AOC._2020;
 
-namespace AOC._2020;
-
-[TestFixture]
 public class Day08
 {
     private readonly string[] _input = File.ReadAllLines("Inputs/Day08.txt");
 
-    [Test]
+    [Fact]
     public void Part1()
     {
         Run(Parse(_input)).acc.Should().Be(1584);
     }
 
-    [Test]
+    [Fact]
     public void Part2()
     {
         Patches(Parse(_input))
@@ -34,12 +30,11 @@ public class Day08
             {
                 return (acc, true);
             }  
-            if (seen.Contains(ip))
+            if (!seen.Add(ip))
             {
                 return (acc, false);
             }
 
-            seen.Add(ip);
             var stm = program[ip];
             switch (stm.op)
             {

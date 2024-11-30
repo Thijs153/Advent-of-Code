@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Packages.props = Directory.Packages.props
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOC.2024", "AOC.2024\AOC.2024.csproj", "{F8D26DF0-210F-4340-9CDF-79F4D9B0ED07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,5 +39,9 @@ Global
 		{0515ED60-D42A-4587-BE1A-8FE44148D8DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0515ED60-D42A-4587-BE1A-8FE44148D8DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0515ED60-D42A-4587-BE1A-8FE44148D8DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8D26DF0-210F-4340-9CDF-79F4D9B0ED07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8D26DF0-210F-4340-9CDF-79F4D9B0ED07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8D26DF0-210F-4340-9CDF-79F4D9B0ED07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8D26DF0-210F-4340-9CDF-79F4D9B0ED07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

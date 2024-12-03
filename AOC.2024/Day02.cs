@@ -14,7 +14,7 @@ public class Day02
     [Fact]
     public void Part2()
     {
-        Parse(_input).Count(reports => Attenuate(reports).Any(IsValid))
+        Parse(_input).Count(reports => RemoveOne(reports).Any(IsValid))
             .Should().Be(413);
     }
     
@@ -26,7 +26,7 @@ public class Day02
             pairs.All(p => 1 <= p.First - p.Second && p.First - p.Second <= 3);
     }
 
-    private static IEnumerable<int[]> Attenuate(int[] report) =>
+    private static IEnumerable<int[]> RemoveOne(int[] report) =>
         from i in Enumerable.Range(0, report.Length + 1)
         let before = report.Take(i - 1)
         let after = report.Skip(i)

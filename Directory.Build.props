@@ -12,4 +12,9 @@
         <PackageReference Include="coverlet.collector" />
         <PackageReference Include="FluentAssertions" />
     </ItemGroup>
+    
+    <ItemGroup>
+        <Using Include="Xunit" />
+        <Using Include="FluentAssertions" />
+    </ItemGroup>
 </Project>

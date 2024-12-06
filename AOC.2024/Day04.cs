@@ -1,6 +1,5 @@
-﻿using System.Collections.Immutable;
-using System.Numerics;
-using Map = System.Collections.Immutable.ImmutableDictionary<System.Numerics.Complex, char>;
+﻿using System.Numerics;
+using Map = System.Collections.Generic.Dictionary<System.Numerics.Complex, char>;
 
 namespace AOC._2024;
 
@@ -53,5 +52,5 @@ public class Day04
         from y in Enumerable.Range(0, input.Length)
         from x in Enumerable.Range(0, input[0].Length)
         select new KeyValuePair<Complex, char>(Complex.ImaginaryOne * y + x, input[y][x])
-    ).ToImmutableDictionary();
+    ).ToDictionary();
 }

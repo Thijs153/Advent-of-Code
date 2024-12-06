@@ -16,13 +16,11 @@ public class Day01
     [Fact]
     public void Part2()
     {
-        var weights = ParseColumn(_input, 1).CountBy(x => x).ToDictionary();
-        ParseColumn(_input, 0)
-            .Select(num => weights.GetValueOrDefault(num) * num)
+        ParseColumn(_input, 1)
+            .Where(new HashSet<int>(ParseColumn(_input, 0)).Contains)
             .Sum()
             .Should().Be(17191599);
     }
-
 
     private static IEnumerable<int> ParseColumn(string[] input, int column) =>
         from line in input

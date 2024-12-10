@@ -58,7 +58,7 @@ public class Day09
         {
             if (i.Value.fileId != -1)
             {
-                // noop
+                // noop - not a free space.
             } 
             else if (i.Value.length == j.Value.length)
             {
@@ -78,7 +78,7 @@ public class Day09
                 var d = j.Value.length - i.Value.length;
                 i.Value = i.Value with { fileId = j.Value.fileId };
                 j.Value = j.Value with { length = d };
-                fileSystem.AddAfter(j, new Block(-1, i.Value.length));
+                fileSystem.AddAfter(j, i.Value with { fileId = -1 });
             }
         }
     }

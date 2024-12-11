@@ -26,18 +26,19 @@ public class Day11
      * computation by storing intermediate results.
      */
     private static long Eval(long engraving, int blinks, Cache cache) =>
-        cache.GetOrAdd((engraving.ToString(), blinks), key =>
+        cache.GetOrAdd((engraving.ToString(), blinks), static (key, args) =>
             key switch
             {
                 (_, 0) => 1,
 
-                ("0", _) => Eval(1, blinks - 1, cache),
+                ("0", _) => Eval(1, args.blinks - 1, args.cache),
 
-                (var st, _) when st.Length % 2 == 0 =>
-                    Eval(long.Parse(st[..(st.Length / 2)]), blinks - 1, cache) +
-                    Eval(long.Parse(st[(st.Length / 2)..]), blinks - 1, cache),
+                var (st, _) when st.Length % 2 == 0 =>
+                    Eval(long.Parse(st[..(st.Length / 2)]), args.blinks - 1, args.cache) +
+                    Eval(long.Parse(st[(st.Length / 2)..]), args.blinks - 1, args.cache),
 
-                _ => Eval(2024 * engraving, blinks - 1, cache)
-            }
+                _ => Eval(2024 * args.engraving, args.blinks - 1, args.cache)
+            },
+            (engraving, blinks, cache)
         );
 }

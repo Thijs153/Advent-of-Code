@@ -4,4 +4,7 @@
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
     </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="AngleSharp" />
+    </ItemGroup>
 </Project>

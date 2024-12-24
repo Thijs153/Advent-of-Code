@@ -11,7 +11,7 @@ public class Day23
     public void Part1()
     {
         var graph = GetGraph(_input);
-        var components = GetSeed(graph);
+        var components = graph.Keys.ToHashSet();
         components = Grow(graph, components);
         components = Grow(graph, components);
 
@@ -23,7 +23,7 @@ public class Day23
     public void Part2()
     {
         var graph = GetGraph(_input);
-        var components = GetSeed(graph);
+        var components = graph.Keys.ToHashSet();
 
         while (components.Count > 1)
         {
@@ -32,8 +32,6 @@ public class Day23
 
         components.Single().Should().Be("di,gs,jw,kz,md,nc,qp,rp,sa,ss,uk,xk,yn");
     }
-    
-    private static HashSet<Component> GetSeed(Graph g) => g.Keys.ToHashSet();
     
     private static HashSet<Component> Grow(Graph g, HashSet<Component> components) => (
         from c in components.AsParallel()
